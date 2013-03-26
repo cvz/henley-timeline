@@ -7,7 +7,7 @@
       $(this.el).html(template);
       
       var tilesView = new TilesView();
-      $(this.el.find("#tiles").html(tilesView.render().el));
+      $(this.$el.find("#tiles").html(tilesView.render().el));
 
       return this;
     }
@@ -21,6 +21,8 @@
 
       this.collection = new TileList();
       this.collection.bind('reset', this.addAllTiles);
+
+      this.collection.reset(timelineData);
     },
 
     addAllTiles: function () {
@@ -28,8 +30,8 @@
     },
 
     addTile: function (tile) {
-      var template = Handlebars.compile($('#tileTemplate'));
-      this.el.append(template(tile.attributes));  
+      var template = Handlebars.compile($('#tileTemplate').html());
+      this.$el.append(template(tile.attributes));  
     },
 
     render: function () {
