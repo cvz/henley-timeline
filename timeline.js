@@ -74,5 +74,6 @@
   
   var mainView = new MainView();
   mainView.render();
+  $(document).tooltip();
 
 })(jQuery);

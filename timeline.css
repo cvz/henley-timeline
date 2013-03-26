@@ -17,3 +17,8 @@
   overflow: hidden;
   text-overflow: ellipsis;
 }
+
+#tiles img {
+    height: 60px;
+    width: 60px;
+}
