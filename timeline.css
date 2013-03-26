@@ -24,6 +24,7 @@ canvas {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  z-index: 10;
 }
 
 #tiles img {
