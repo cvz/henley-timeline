@@ -54,6 +54,20 @@ timelineData = [
         "title": "Destroying the Georgia Countryside",
         "description": " A week after Lincoln’s re-election, Sherman set out across Georgia, taking the war to the Southern people themselves. Such a march would be “a demonstration to the world, foreign and domestic, that we have a power which Davis cannot resist,” Sherman argued. The triumphant army—sixty thousand strong and in five columns, spread across a broad swath of territory—made its way across the state in the fall of 1864. Sherman’s troops laid waste to the Georgia countryside. Union troops were ordered to destroy the railroad network and to forage for food, seizing it from nearby farmers. Troop commanders were empowered to destroy factories, cotton gins, and private homes in areas determined to be hostile, and were given instructions to seize horses, mules, and wagons as needed.  To make matters worse for residents in the path of Sherman’s soldiers, large numbers of deserters from both sides, fugitive slaves and outlaws all used the situation to inflict widespread destruction and panic. Sherman arrived at Savannah on December 21. “I beg to present to you, as a Christmas gift, the city of Savannah,” Sherman telegraphed Lincoln.",
         "location": "Savannah, GA",
-        "thumbnail": "images/destroying the GA countryside.jpg.jpeg"
+        "thumbnail": "images/destroying the GA countryside.jpg"
+    },
+    {
+        "date": "1863/04/02",
+        "title": " Richmond bread riots ",
+        "description": "This Northern portrayal of the Richmond bread riots imagined the rioters as fearsome, gaunt amazons; other accounts emphasized their respectability. In either case, they behaved in ways quite remarkable for any women in nineteenth-century America.",
+        "location": "Richmond, VA",
+        "thumbnail": "images/RichmondBreadRiots.jpg"
+    },
+    {
+        "date": "1865/01/01",
+        "title": " 4th U.S. Colored Infantry, Company E, at Fort Lincoln, ",
+        "description": " More than 180,000 African American men fought for the Union. Their military service helped convince policymakers to extend American citizenship to black men.",
+        "location": "Washington, D.C.",
+        "thumbnail": "images/US_Colored_Infantry.jpg"
     }
 ];
