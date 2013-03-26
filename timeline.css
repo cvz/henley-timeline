@@ -19,6 +19,14 @@
 }
 
 #tiles img {
-    height: 60px;
-    width: 60px;
+  height: 60px;
+  width: 60px;
+}
+
+#map {
+  background: #ffffff;
+  border-radius: 10px;
+  border: 1px solid silver;
+  padding: 1em;
+  margin: 0.5em 0;
 }
