@@ -35,6 +35,7 @@
 
     addAllTiles: function () {
       this.collection.each(this.addTile);
+      this.$el.find('li').draggable({revert: "invalid", snap: "#map"});
     },
 
     addTile: function (tile) {
@@ -43,6 +44,7 @@
     },
 
     render: function () {
+      this.$el.tooltip();
       return this;
     }
   });
@@ -109,6 +111,6 @@
 
   var mainView = new MainView();
   mainView.render();
-  $(document).tooltip();
+  $('#map').droppable();
 
 })(jQuery);
