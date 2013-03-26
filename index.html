@@ -4,11 +4,13 @@
     <meta charset="utf-8">
     <title>Henley timeline</title>
     <link href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/css/bootstrap-combined.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.2/themes/smoothness/jquery-ui.css" />
     <link href="timeline.css" rel="stylesheet">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
   </head>
   <body>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script src="http://code.jquery.com/ui/1.10.2/jquery-ui.js"></script>
     <script src="http://ajax.cdnjs.com/ajax/libs/underscore.js/1.4.4/underscore-min.js"></script>
     <script src="http://ajax.cdnjs.com/ajax/libs/backbone.js/1.0.0/backbone-min.js"></script>
     <script src="http://cdnjs.cloudflare.com/ajax/libs/handlebars.js/1.0.0-rc.3/handlebars.min.js"></script>
@@ -16,8 +18,8 @@
 
     <script id="mainTemplate" type="text/x-handlebars-template">
       <div class="row">
-      <div class="span3" id="tiles">Tiles</div>
-      <div class="span9">Big Map</div>
+      <div class="span4" id="tiles">Tiles</div>
+      <div class="span8">Big Map</div>
       </div>
       <div class="row">
         <div class="span12">Timeline</div>
@@ -25,7 +27,8 @@
     </script>
 
     <script id="tileTemplate" type="text/x-handlebars-template">
-      <li>
+      <li title="{{ description }}">
+      <img src="{{ thumbnail }}"/>
       {{ title }}
       </li>
     </script>
