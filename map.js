@@ -6,10 +6,9 @@
         var event = timelineData[event_index];
         var latlong = event['latlong'];
         if (latlong) {
-            markers[markers.length] = {latLng: latlong, name: event.description};
+            markers[markers.length] = {latLng: latlong, name: event.title};
         }
     }
-    debugger;
     $('#map').vectorMap({
         map: 'us-map',
         backgroundColor: 'gray',
