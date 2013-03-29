@@ -53,30 +53,10 @@
     tagName: 'canvas',
 
     initialize: function () {
-      _.bindAll(this,'render', 'renderCanvas', 'renderTargets', 'renderTarget');
+      _.bindAll(this,'render', 'renderCanvas', 'renderTarget');
       this.collection.on('reset', this.renderCanvas);
-      this.collection.on('reset', this.renderTargets);
-
     },
 
-    renderTargets: function () {
-      this.collection.each(this.renderTarget);
-    },
-
-    renderTarget: function (target) {
-      var template = Handlebars.compile($('#targetTemplate').html());
-      var html = template(target.toJSON())
-
-      // little funny business because jquery get confused accepting handlebars template directly, but we still need
-      // elements handle
-      var el = $("<div></div>")
-        .html(html)
-        .offset({
-          top: -120,
-          left: 60
-        });
-      this.$el.after(el);  
-    },
 
     renderCanvas: function () {
       this.$el.attr('width', '960px');
@@ -87,11 +67,11 @@
 
       context.font = "bold 10px sans-serif";
 
-      var dates = this.collection.getDates();
-      var numOfMonths = _.last(dates).diff(_.first(dates), 'months');
+      var startMonth = this.collection.first().mDate;
+      var numOfMonths = this.collection.last().mDate.diff(startMonth, 'months');
       var monthBlock = 960 / numOfMonths;
-      var curPos = 0;
-      var curDate = moment(_.last(dates));
+      var curPos = 960;
+      var curDate = this.collection.last().mDate;
       while(numOfMonths--) {
         if(curDate.month()===1) {
           context.fillText(curDate.year(), curPos, 8);
@@ -99,11 +79,33 @@
 
         context.moveTo(curPos, 10);
         context.lineTo(curPos, 20);
-        curPos = curPos + monthBlock;  
+        curPos = curPos - monthBlock;  
         curDate.subtract('months', 1);
       }
       context.stroke();
+
+      this.collection.each(function(tile) {
+        this.renderTarget(tile, startMonth, monthBlock);
+      }, this);
     },
+
+    renderTarget: function (tile, startMonth, monthBlock) {
+      var offset = tile.mDate.diff(startMonth, 'months') * monthBlock;
+
+      var template = Handlebars.compile($('#targetTemplate').html());
+      var html = template({
+        date: tile.mDate.format("D/M/YYYY")
+      })
+
+      var el = $("<div></div>")
+        .html(html)
+        .offset({
+          top: -120,
+          left: offset
+        });
+      this.$el.after(el);  
+    },
+
 
     render: function () {
       return this;  
@@ -111,11 +113,17 @@
   });
 
   var Tile = Backbone.Model.extend({
-
+    initialize : function () {
+      this.mDate = moment(this.get('date'), 'YYYY/MM/DD');    
+    }
   });
 
   var TileList = Backbone.Collection.extend({
     model: Tile,
+
+    comparator: function(tile) {
+      return moment(tile.get('date'), 'YYYY/MM/DD').unix();
+    },
 
     getDates: function () {
       var datesSorted = this.pluck('date').map(function (date) {
