@@ -68,9 +68,10 @@ timelineData = [
     },
     {
         "date": "1865/01/01",
-        "title": " 4th U.S. Colored Infantry, Company E, at Fort Lincoln, ",
+        "title": "4th U.S. Colored Infantry, Company E, at Fort Lincoln, ",
         "description": "More than 180,000 African American men fought for the Union. Their military service helped convince policymakers to extend American citizenship to black men.",
         "location": "Washington, D.C.",
+        "latlong": [38.9897306, -77.41000939999999],
         "thumbnail": "images/US_Colored_Infantry.jpg"
     },
     {
