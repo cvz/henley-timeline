@@ -53,9 +53,29 @@
     tagName: 'canvas',
 
     initialize: function () {
-      _.bindAll(this,'render', 'renderCanvas');
+      _.bindAll(this,'render', 'renderCanvas', 'renderTargets', 'renderTarget');
       this.collection.on('reset', this.renderCanvas);
+      this.collection.on('reset', this.renderTargets);
 
+    },
+
+    renderTargets: function () {
+      this.collection.each(this.renderTarget);
+    },
+
+    renderTarget: function (target) {
+      var template = Handlebars.compile($('#targetTemplate').html());
+      var html = template(target.toJSON())
+
+      // little funny business because jquery get confused accepting handlebars template directly, but we still need
+      // elements handle
+      var el = $("<div></div>")
+        .html(html)
+        .offset({
+          top: -120,
+          left: 60
+        });
+      this.$el.after(el);  
     },
 
     renderCanvas: function () {
@@ -64,7 +84,6 @@
       context.strokeStyle = '#444';
       context.moveTo(0, 20);
       context.lineTo(960, 20);
-      context.stroke();
 
       context.font = "bold 10px sans-serif";
 

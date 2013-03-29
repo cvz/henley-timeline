@@ -41,3 +41,25 @@ canvas {
   width: 600px;
   height: 800px;
 }
+
+
+.callout {
+    position: absolute;
+    margin: 4px 0;
+    padding: 10px 10px;
+    background-color: #eef4f9;
+    border-radius: 7px;
+}
+.callout .notch {
+    position: absolute;
+    top: -7px;
+    left: 20px;
+    margin: 0;
+    border-top: 0;
+    border-left: 7px solid transparent;
+    border-right: 7px solid transparent;
+    border-bottom: 7px solid #eef4f9;
+    padding: 0;
+    width: 0;
+    height: 0;
+}
