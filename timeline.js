@@ -35,7 +35,7 @@
 
     addAllTiles: function () {
       this.collection.each(this.addTile);
-      this.$el.find('li img').draggable({helper: "clone",revert: "invalid", snap: "#map, .thumb"});
+      this.$el.find('li img').draggable({helper: "clone", revert: "invalid", snap: "#map, .thumb"});
     },
 
     addTile: function (tile) {
@@ -116,12 +116,12 @@
           top: 35,
           left: offset
         })
-        .droppable({drop: this.drop});
+        .droppable({accept: 'img', drop: this.drop});
       return this;
     },
 
     drop: function (event, ui) {
-      this.$el.css('background-color', 'red');  
+      this.$el.find('.thumb').html(ui.draggable.clone());
     }
 
   });
