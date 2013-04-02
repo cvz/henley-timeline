@@ -11,6 +11,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
   </head>
   <body>
+    <script src="http://localhost:9001/ws"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
     <script src="http://code.jquery.com/ui/1.10.2/jquery-ui.js"></script>
     <script src="http://ajax.cdnjs.com/ajax/libs/underscore.js/1.4.4/underscore-min.js"></script>
@@ -71,10 +72,9 @@
     </script>
 
     <script id="targetTemplate" type="text/x-handlebars-template">
-      <div class="callout">
       {{ date }}
+      <div class="thumb"></div>
       <b class="notch"></b>
-      </div>
     </script>
 
     <div class="container">

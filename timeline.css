@@ -24,12 +24,16 @@ canvas {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  z-index: 10;
 }
 
 #tiles img {
   height: 60px;
   width: 60px;
+  z-index: 40;
+}
+
+#timeline {
+  position: relative;
 }
 
 #map {
@@ -50,6 +54,14 @@ canvas {
     background-color: #eef4f9;
     border-radius: 7px;
 }
+
+.callout div.thumb {
+  width: 60px;
+  height: 60px;
+  background-color: gray;
+  border: 1px solid silver;
+}
+
 .callout .notch {
     position: absolute;
     top: -7px;

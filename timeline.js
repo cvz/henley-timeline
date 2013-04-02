@@ -35,16 +35,17 @@
 
     addAllTiles: function () {
       this.collection.each(this.addTile);
-      this.$el.find('li').draggable({revert: "invalid", snap: "#map"});
+      this.$el.find('li img').draggable({helper: "clone",revert: "invalid", snap: "#map, .thumb"});
     },
 
     addTile: function (tile) {
-      var template = Handlebars.compile($('#tileTemplate').html());
-      this.$el.append(template(tile.attributes));  
+      var template = Handlebars.compile($('#tileTemplate').html()),
+          tile = $.parseHTML(template(tile.attributes));
+      this.$el.append(tile);  
     },
 
     render: function () {
-      this.$el.tooltip();
+      //this.$el.tooltip();
       return this;
     }
   });
@@ -53,7 +54,7 @@
     tagName: 'canvas',
 
     initialize: function () {
-      _.bindAll(this,'render', 'renderCanvas', 'renderTarget');
+      _.bindAll(this,'render', 'renderCanvas');
       this.collection.on('reset', this.renderCanvas);
     },
 
@@ -85,36 +86,49 @@
       context.stroke();
 
       this.collection.each(function(tile) {
-        this.renderTarget(tile, startMonth, monthBlock);
+        this.$el.after(new TimeLineCalloutView({model: tile, startMonth: startMonth, monthBlock: monthBlock}).render().el);
       }, this);
     },
 
-    renderTarget: function (tile, startMonth, monthBlock) {
-      var offset = tile.mDate.diff(startMonth, 'months') * monthBlock;
+    render: function () {
+      return this;
+    }
+  });
+
+  var TimeLineCalloutView = Backbone.View.extend({
+    tagName: "div",
+    className: "callout",
+
+    initialize: function () {
+      _.bindAll(this, 'drop');
+    },
+
+    render: function () {
+      var offset = this.model.mDate.diff(this.options.startMonth, 'months') * this.options.monthBlock;
 
       var template = Handlebars.compile($('#targetTemplate').html());
       var html = template({
-        date: tile.mDate.format("D/M/YYYY")
+        date: this.model.mDate.format("D/M/YYYY")
       })
 
-      var el = $("<div></div>")
-        .html(html)
+      this.$el.html(html)
         .offset({
-          top: -120,
+          top: 35,
           left: offset
-        });
-      this.$el.after(el);  
+        })
+        .droppable({drop: this.drop});
+      return this;
     },
 
-
-    render: function () {
-      return this;  
+    drop: function (event, ui) {
+      this.$el.css('background-color', 'red');  
     }
+
   });
 
   var Tile = Backbone.Model.extend({
     initialize : function () {
-      this.mDate = moment(this.get('date'), 'YYYY/MM/DD');    
+      this.mDate = moment(this.get('date'), 'YYYY/MM/DD');
     }
   });
 
