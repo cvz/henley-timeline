@@ -1,5 +1,4 @@
 (function($){
-    console.log('map: '+JSON.stringify(map));
     $.fn.vectorMap('addMap', 'us-map', map);
     var markers = [];
     for (var event_index = 0; event_index < timelineData.length; event_index++) {
@@ -9,12 +8,13 @@
             markers[markers.length] = {latLng: latlong, name: event.title};
         }
     }
+    console.log('markers: '+JSON.stringify(markers));
     $('#map').vectorMap({
         map: 'us-map',
         backgroundColor: 'gray',
         zoomOnScroll: false,
         markers: markers,
-        markerStyle: {initial: {fill: 'black', r:10}},
+        markerStyle: {initial: {fill: 'white', r:10}},
         focusOn: {
             x: 1,
             y: 0.5,
