@@ -440,6 +440,8 @@ jvm.WorldMap.prototype = {
             element.setSelected(!element.isSelected);
           }
         }
+      } else {
+         console.log('Mouse Up!!!!!');
       }
     });
   },
