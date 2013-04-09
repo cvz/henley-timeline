@@ -13,28 +13,28 @@
         initial: {
           fill: 'white',
           stroke: '#505050',
-          "fill-opacity": 0,
+          "fill-opacity": 1,
           "stroke-width": 1,
-          "stroke-opacity": 0,
+          "stroke-opacity": 1,
           r: 10
         },
         hover: {
           stroke: 'black',
-          "stroke-width": 5
+          "stroke-width": 2
         }
     };
 
-    var onMarkerOver = function(e, code) {
-    	console.log('onMarkerOver code: '+code+' e: '+JSON.stringify(e));
-    };
-
-    var onMarkerClick = function(e, code) {
-    	console.log('onMarkerOver code: '+code+' e: '+JSON.stringify(e));
-    };
-
-    var onMarkerSelected = function(e, code, isSelected, selectedMarkers ) {
-    	console.log('onMarkerSelected code: '+code+' isSelected: '+isSelected+' e: '+JSON.stringify(e));
-    };
+//    var onMarkerOver = function(e, code) {
+//    	console.log('onMarkerOver code: '+code+' e: '+JSON.stringify(e));
+//    };
+//
+//    var onMarkerClick = function(e, code) {
+//    	console.log('onMarkerOver code: '+code+' e: '+JSON.stringify(e));
+//    };
+//
+//    var onMarkerSelected = function(e, code, isSelected, selectedMarkers ) {
+//    	console.log('onMarkerSelected code: '+code+' isSelected: '+isSelected+' e: '+JSON.stringify(e));
+//    };
 
     $('#map').vectorMap({
         map: 'us-map',
@@ -47,16 +47,16 @@
             y: 0.5,
             scale: 2
         },
-        onMarkerOver: onMarkerOver,
-        onMarkerClick: onMarkerClick,
-        onMarkerSelected: onMarkerSelected
+//        onMarkerOver: onMarkerOver,
+//        onMarkerClick: onMarkerClick,
+//        onMarkerSelected: onMarkerSelected
     });
     
-    $('#map').droppable({
-		drop: function( e, ui ) {
-			console.log('Dropped!! ui: '+JSON.stringify(ui));
-		}
-	});
+//    $('#map').droppable({
+//		drop: function( e, ui ) {
+//			console.log('Dropped!! ui: '+JSON.stringify(ui));
+//		}
+//	});
     
 })(jQuery);
 
